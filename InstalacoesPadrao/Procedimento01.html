@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>CheckList Procedimentos</title>
+    <style>
+        /* Estilo geral do corpo */
+        body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #0e0e0e, #0e0e0e);
+    color: #fff;
+    min-height: 100vh; /* Garante que o conteúdo ocupe pelo menos 100vh */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ajusta para começar no topo */
+    overflow-x: hidden; /* Impede o scroll horizontal */
+    position: relative; /* Necessário para posicionar o pseudo-elemento ::before */
+}
+
+/* Efeito animado no fundo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* A altura é 100% da janela */
+    background: radial-gradient(circle at center, #ffffff(0, 0, 0) 0%, rgba(0, 0, 0, 0.404) 80%);
+    animation: pulse 4s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Container centralizado com margem dinâmica */
+.container {
+    width: 750px;
+    padding: 30px;
+    background: linear-gradient(135deg, #131313, #000000);
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgb(61, 200, 255);
+    animation: fadeIn 1s ease-in-out;
+    margin-top: 10vh; /* Margem superior baseada em 10% da altura da tela */
+    margin-bottom: 10vh; /* Margem inferior baseada em 10% da altura da tela */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #00aeff;
+            text-shadow: 0 0 8px rgba(0, 183, 255, 0.6);
+        }
+
+        /* Grupo de checkboxes */
+        .checkbox-group {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #2c2c30, #111111);
+            border-radius: 8px;
+            padding: 10px 15px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .checkbox-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.459);
+        }
+
+        /* Checkbox e texto */
+        label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Links */
+        a {
+            color: #00aeff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botão */
+        .bottom-buton {
+            width: 100%;
+            box-shadow: 0 0 8px #83c3ff;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #363636;
+            background: linear-gradient(135deg, #2e9ffc, #2bb1ff);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-shadow: 0 0 1px #141414;
+        }
+
+        button:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 8px #ff2b2b;
+            background: #8a0000;
+            color: #f5f5f5;
+            text-shadow: 0 0 1.5px #000000;
+            transition: background-color 1s, box-shadow 0.5s, color 1s;
+        }
+        .logo {
+            position: fixed; 
+            top: 5px; 
+            left: 20px; 
+            z-index: 100; 
+            width: 130px; 
+            height: auto; 
+        }
+  /* Estilo do botão Voltar com ícone pequeno */
+.back-button {
+    position: fixed;
+    top: 110px; /* Coloca o botão um pouco abaixo da logo */
+    left: 26.5px; /* Distância da esquerda */
+    background-color: transparent; /* Sem fundo */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Deixa o ícone arredondado */
+    padding: 8px; /* Tamanho pequeno */
+    font-size: 20px; /* Tamanho pequeno para o ícone */
+    cursor: pointer;
+    z-index: 110;
+    display: flex;
+    justify-content: center; /* Centraliza o ícone dentro do botão */
+    align-items: center; /* Centraliza o ícone verticalmente */
+}
+
+.back-button i {
+    font-size: 20px; /* Tamanho do ícone */
+}
+
+.back-button:hover {
+    background-color: #d12020; /* Fundo vermelho no hover */
+    border-radius: 50%; /* Mantém o formato arredondado */
+    padding: 8px; /* Ajuste do padding no hover */
+}
+
+    </style>
+</head>
+<body>
+    <img src="../Logo.png" alt="Logo" class="logo">
+    <button class="back-button" onclick="window.location.href='../instalacoes.html';">
+        <i class="fas fa-arrow-left"></i> <!-- Ícone de seta -->
+    </button>
+    <div class="container">
+        <h1>Procedimentos Lothus</h1>
+        <form id="checklist-form">
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Instalar o Logmein
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B31B21515-AF0A-4102-BF58-1AFE26D2F5FC%7D&file=Instala%C3%A7%C3%A3o%20LogMein.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Configuração do e-mail corporativo">
+                    Criar conta de suporte local
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B7E1F277C-7B63-4D53-A74D-6E975C729D46%7D&file=Procedimento%20para%20criar%20usu%C3%A1rio%20suporte%20Local.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Acesso ao sistema interno">
+                    Configurar DNS
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7BCCFECDEC-4D12-4652-AD58-D55C3E7C6098%7D&file=Configura%C3%A7%C3%A3o%20DNS.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Cadastro no portal RH">
+                    Colocar a máquina no domínio
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BD248EAEB-B879-42AF-A13A-01ABF934007D%7D&file=Procedimento%20para%20ingressar%20m%C3%A1quina%20no%20dom%C3%ADnio%20Local.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Criar usuário no AD e logar com ele
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7B8A340673-663E-401E-8AC4-76C439E45C7A%7D&file=Procedimento%20para%20cria%C3%A7%C3%A3o%20de%20novo%20usu%C3%A1rio%20no%20AD%20Local%20%E2%80%93%20Loth.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Instalação do pacote office
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BAA3F9C12-4929-4FD0-8282-479E97751795%7D&file=Procedimento%20Instala%C3%A7%C3%A3o%20Pacote%20Office.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Configurar a assinatura de Email
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B84C5AD1B-F820-4036-8A04-ACAF50526527%7D&file=Procedimento%20para%20criar%20assinatura%20no%20Outlook.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Instalar antivírus Bitdefender
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7B244BE1F0-4935-45BF-9B8A-7758D644133E%7D&file=Procedimento%20para%20instala%C3%A7%C3%A3o%20do%20Bitdefender%20e%20associa%C3%A7%C3%A3o%20com%20pol%C3%ADtica.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Fazer mapeamento do diretório Publico
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B3F2E600F-D2B8-4362-B462-E11399EBC1A3%7D&file=Mapeamento%20de%20Rede.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Bysoft e Java
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7BCCD6CA38-5D25-4C82-9228-0425974AE2F5%7D&file=Procedimento%20Bysoft%20Lothus.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Copiar diretório iglobal local
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B425F72D3-56F3-468E-BE37-826C9D5A6B97%7D&file=Procedimento%20Pasta%20iglobal.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Atalho do Atlantis
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BD70A4DA7-F12D-46AC-BFE2-612187667245%7D&file=Atalho%20Atlantis.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Mapeamento e atalho do Ellas(Siscex)
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7BC6F3B063-73CF-44E1-B544-97CE25139C25%7D&file=Procedimento%20para%20instala%C3%A7%C3%A3o%20do%20sistema%20Ellas%20(Siscex).docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Instalar impressoras do departamento
+                </label>
+                <a href="https://gateit.sharepoint.com/sites/LOTHUSCARGO" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Instalar Assinador Serpro, Adobe e Chrome
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B740B65BB-60A1-4900-AC9B-F5E92712DDE0%7D&file=Procedimento%20Download%20Adobe%20Reader%20e%20Serpro.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Ativar o Bitlocker
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7B731054DD-5A00-42C0-B2A1-32DA492B6175%7D&file=Procedimento%20para%20ativar%20o%20Bitlocker%20-%20Lothus.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Instalar VPN
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7B1E059D9F-6FFF-4B6C-B259-48596EAFAA80%7D&file=Procedimento%20de%20instala%C3%A7%C3%A3o%20da%20VPN%20Fortinet%20Algar.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Instalar Certificados Digitais
+                </label>
+                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BA608BB60-2545-4809-8BD3-4BA016452503%7D&file=Procedimento%20de%20instala%C3%A7%C3%A3o%20de%20certificado%20digital.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+            </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" value="Treinamento inicial">
+                    Backup de arquivos locais
+                </label>
+                <a href="https://gateit.sharepoint.com/sites/LOTHUSCARGO" target="_blank">Ver Procedimento</a>
+            </div>
+            
+            <button class="bottom-buton" type="button" onclick="limparCheckboxes()">Limpar Seleções</button>
+        </form>
+    </div>
+
+    <script>
+        // Função para limpar todos os checkboxes
+        function limparCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+        }
+    </script>
+</body>
+</html>

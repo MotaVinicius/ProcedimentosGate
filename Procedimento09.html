@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>CheckList Procedimentos</title>
+    <style>
+        /* Estilo geral do corpo */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #0e0e0e, #0e0e0e);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            width: 750px;
+            padding: 30px;
+            background: linear-gradient(135deg, #131313, #000000);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgb(61, 200, 255);
+            margin-top: 10vh;
+            margin-bottom: 10vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #00aeff;
+        }
+
+        /* Grupo de checkboxes */
+        .checkbox-group {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #2c2c30, #111111);
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .checkbox-group:hover {
+            box-shadow: 0px 0px 7px rgb(61, 200, 255)
+        }
+
+        label {
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        /* Links */
+        a {
+            color: #00aeff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos de subitens */
+        .subitens {
+            display: none;
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #ccc;
+        }
+
+        .subitens a {
+            font-size: 14px;
+        }
+
+        /* Botão */
+        .bottom-buton {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #363636;
+            background: linear-gradient(135deg, #2e9ffc, #2bb1ff);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 8px #ff2b2b;
+            background: #8a0000;
+            color: #f5f5f5;
+            text-shadow: 0 0 1.5px #000000;
+            transition: background-color 1s, box-shadow 0.5s, color 1s;
+        }
+        .logo {
+            position: fixed; 
+            top: 5px; 
+            left: 20px; 
+            z-index: 100; 
+            width: 130px; 
+            height: auto; 
+        }
+        .back-button {
+    position: fixed;
+    top: 110px; /* Coloca o botão um pouco abaixo da logo */
+    left: 26.5px; /* Distância da esquerda */
+    background-color: transparent; /* Sem fundo */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Deixa o ícone arredondado */
+    padding: 8px; /* Tamanho pequeno */
+    font-size: 20px; /* Tamanho pequeno para o ícone */
+    cursor: pointer;
+    z-index: 110;
+    display: flex;
+    justify-content: center; /* Centraliza o ícone dentro do botão */
+    align-items: center; /* Centraliza o ícone verticalmente */
+}
+
+.back-button i {
+    font-size: 20px; /* Tamanho do ícone */
+}
+
+.back-button:hover {
+    background-color: #d12020; /* Fundo vermelho no hover */
+    border-radius: 50%; /* Mantém o formato arredondado */
+    padding: 8px; /* Ajuste do padding no hover */
+}
+    </style>
+</head>
+<body>
+    <img src="Logo.png" alt="Logo" class="logo">
+    <button class="back-button" onclick="window.location.href='index.html';">
+        <i class="fas fa-arrow-left"></i> <!-- Ícone de seta -->
+    </button>
+    <div class="container">
+        <h1>Gestão</h1>
+        <form id="checklist-form">
+            <div class="checkbox-group">
+                <label onclick="toggleSubitens('subitens1')">
+                    Inventario de Hardware
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="subitens" id="subitens1">
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/LOTHUSCARGO/_layouts/15/Doc.aspx?sourcedoc=%7B70AA4918-A4FD-4CB6-8BF6-041DD0B2F076%7D&file=Inventario%20Hardware%20e%20Software%20-%20Lothus%20-%2017-01-2025.xlsx&action=default&mobileredirect=true" target="_blank">Lothus</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/RSA/_layouts/15/Doc.aspx?sourcedoc=%7BCAD5D1CD-628C-4A15-AD85-8EAEE5D287BD%7D&file=Inventario%20Atualizado%20RSA%20e%20Vquatro%2001-2025.xlsx&action=default&mobileredirect=true" target="_blank">RSA</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/BVT/_layouts/15/Doc.aspx?sourcedoc=%7B55EA6100-8302-4AF5-85EB-A51F59DF6351%7D&file=Invent%C3%A1rio%20BVT%2001-2025.xlsx&action=default&mobileredirect=true" target="_blank">BVT</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/COPPI/_layouts/15/Doc.aspx?sourcedoc=%7B9AAD88D3-79D9-4ACA-A287-EE268874EAFA%7D&file=Invent%C3%A1rio%20m%C3%A1quinas%20COPPI-CFV-Equicontrol%20%202024%20.xlsx&action=default&mobileredirect=true" target="_blank">Coppi</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/PHILOS/_layouts/15/Doc.aspx?sourcedoc=%7B3B19B581-DE87-4DF2-9259-3FD37A30C699%7D&file=Invent%C3%A1rio%20M%C3%A1quinas%20Philos%20-%20Novembro%2024.xlsx&action=default&mobileredirect=true" target="_blank">Philos</a>
+                </div>
+            </div>
+            <div class="checkbox-group">
+                <label onclick="toggleSubitens('subitens2')">
+                    Usuarios TomTicket
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="subitens" id="subitens2">
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BB94665AB-308D-4997-8675-FE71EBFCAE7D%7D&file=Acesso%20Tomticket%20-%20Lothus.xlsx&action=default&mobileredirect=true" target="_blank">Lothus</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B7D6B8E55-7770-4C7B-A634-41B654755497%7D&file=Acesso%20Tomticket%20-%20RSA.xlsx&action=default&mobileredirect=true" target="_blank">RSA</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B3211450D-161C-4775-ADA8-03952249D8C0%7D&file=Acesso%20Tomticket%20-%20BVT.xlsx&action=default&mobileredirect=true" target="_blank">BVT</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BCA29BCB0-6E39-4E0D-A017-8BD4E0E2C6EE%7D&file=Acesso%20Tomticket%20-%20Coppi.xlsx&action=default&mobileredirect=true" target="_blank">Coppi</a><br>
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B634243EE-D799-4CCE-9BB2-60AF99CA1C00%7D&file=Acesso%20Tomticket%20-%20Philos.xlsx&action=default&mobileredirect=true" target="_blank">Philos</a>
+                </div>
+            </div>
+            <div class="checkbox-group">
+                <label onclick="toggleSubitens('subitens3')">
+                    Usuarios Gate It
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="subitens" id="subitens3">
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B331E4C2B-1CCF-4117-A5C5-26DB76DD7B1A%7D&file=Users%20GateIT.xlsx&action=default&mobileredirect=true" target="_blank">Logins usuario gateit</a><br>
+                </div>
+                
+            </div>
+
+
+        </form>
+    </div>
+
+    <script>
+        // Função para limpar todos os checkboxes
+        function limparCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+        }
+
+        // Função para alternar a exibição dos subitens
+        function toggleSubitens(id) {
+            const subitens = document.getElementById(id);
+            const chevron = subitens.previousElementSibling.querySelector('i');
+
+            if (subitens.style.display === "none" || subitens.style.display === "") {
+                subitens.style.display = "block";
+                chevron.classList.remove("fa-chevron-down");
+                chevron.classList.add("fa-chevron-up");
+            } else {
+                subitens.style.display = "none";
+                chevron.classList.remove("fa-chevron-up");
+                chevron.classList.add("fa-chevron-down");
+            }
+        }
+    </script>
+</body>
+</html>
