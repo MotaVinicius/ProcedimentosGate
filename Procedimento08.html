@@ -128,6 +128,18 @@ body::before {
             text-decoration: underline;
         }
 
+         /* Estilos de subitens */
+        .subitens {
+            display: none;
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #ccc;
+        }
+
+        .subitens a {
+            font-size: 14px;
+        }
+
         /* Botão */
         .bottom-buton {
             width: 100%;
@@ -200,6 +212,15 @@ body::before {
         <h1>Procedimentos para Impressoras</h1>
         <form id="checklist-form">
             <div class="checkbox-group">
+                <label onclick="toggleSubitens('subitens1')">
+                    Mapeamento de impressoras
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="subitens" id="subitens1">
+                    <a href="https://gateit.sharepoint.com/:x:/r/sites/RSA/_layouts/15/Doc.aspx?sourcedoc=%7B6C4D5429-B295-4134-A692-764AB802213F%7D&file=Mapeamento%20Impressoras..xlsx&action=default&mobileredirect=true" target="_blank">RSA</a><br>
+                </div>
+            </div>
+            <div class="checkbox-group">
                 <label>
                     Atualização de Drivers
                 </label>
@@ -219,6 +240,22 @@ body::before {
         function limparCheckboxes() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => checkbox.checked = false);
+        }
+
+        // Função para alternar a exibição dos subitens
+        function toggleSubitens(id) {
+            const subitens = document.getElementById(id);
+            const chevron = subitens.previousElementSibling.querySelector('i');
+
+            if (subitens.style.display === "none" || subitens.style.display === "") {
+                subitens.style.display = "block";
+                chevron.classList.remove("fa-chevron-down");
+                chevron.classList.add("fa-chevron-up");
+            } else {
+                subitens.style.display = "none";
+                chevron.classList.remove("fa-chevron-up");
+                chevron.classList.add("fa-chevron-down");
+            }
         }
     </script>
 </body>
