@@ -55,12 +55,14 @@
         label {
             color: #fff;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             gap: 10px;
             cursor: pointer;
         }
-
+        .expd {
+            justify-content: space-between;
+        }
+            
         /* Links */
         a {
             color: #00aeff;
@@ -150,7 +152,7 @@
     <div class="container">
         <h1>Procedimentos para Impressoras</h1>
         <form id="checklist-form">
-            <div class="checkbox-group">
+            <div class="checkbox-group expd">
                 <label onclick="toggleSubitens('subitens1')">
                     Mapeamento de impressoras
                     <i class="fas fa-chevron-down"></i>
