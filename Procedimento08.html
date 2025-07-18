@@ -58,8 +58,6 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-        }
-        .expd {
             justify-content: space-between;
         }
             
@@ -84,6 +82,12 @@
 
         .subitens a {
             font-size: 14px;
+        }
+       
+       .label-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* Botão */
@@ -152,7 +156,7 @@
     <div class="container">
         <h1>Procedimentos para Impressoras</h1>
         <form id="checklist-form">
-            <div class="checkbox-group expd">
+            <div class="checkbox-group">
                 <label onclick="toggleSubitens('subitens1')">
                     Mapeamento de impressoras
                     <i class="fas fa-chevron-down"></i>
@@ -162,16 +166,16 @@
                 </div>
             </div>
             <div class="checkbox-group">
-                <label>
-                    Atualização de Drivers
-                </label>
-                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B96BDF6B5-76AA-47E7-B809-DD0EED09233E%7D&file=Atualiza%C3%A7%C3%A3o%20de%20Drivers.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+                <div class="label-link">
+                    <label>Atualização de Drivers</label>
+                    <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7B96BDF6B5-76AA-47E7-B809-DD0EED09233E%7D&file=Atualiza%C3%A7%C3%A3o%20de%20Drivers.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+                </div>
             </div>
             <div class="checkbox-group">
-                <label>
-                    Reinicialização de Spooler de Impressão
-                </label>
-                <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BDCCD77C8-87BD-4BD6-AB66-615DC8343C8E%7D&file=Reinicializa%C3%A7%C3%A3o%20de%20Spooler%20de%20Impressao.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+                <div class="label-link">
+                    <label> Reinicialização de Spooler de Impressão </label>
+                    <a href="https://gateit.sharepoint.com/:w:/r/sites/Gate/_layouts/15/Doc.aspx?sourcedoc=%7BDCCD77C8-87BD-4BD6-AB66-615DC8343C8E%7D&file=Reinicializa%C3%A7%C3%A3o%20de%20Spooler%20de%20Impressao.docx&action=default&mobileredirect=true" target="_blank">Ver Procedimento</a>
+                </div>
             </div>
         </form>
     </div>
